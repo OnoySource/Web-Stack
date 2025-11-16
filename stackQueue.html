@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Demo Stack (LIFO)</title>
+        
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+      <header>
+        <h2>Demo Struktur Data: STACK (LIFO)</h2>
+      </header>
+      <!------------------------------------------------------------------------->
+      <div id="container">
+        <section>
+            <p>
+                Stack adalah struktur data linear yang menggunakan prinsip LIFO (Last In, First Out).
+            </br>
+                Elemen yang terakhir dimasukkan akan menjadi yang pertama dikeluarkan. </p>
+               <p> <span style="font-weight: bold;">Analogi : </span>
+                Bayangkan tumpukan piring. Piring terakhir yang ditaruh di atas akan diambil terlebih dahulu.
+            </p>
+            <hr>    
+            <h3> &emsp14;   Operasi dasar Stack</h3>
+
+            <table id="tableBorder">
+                <thead>
+                    <tr>
+                        <th>Operasi</th>
+                        <th>Deskripsi</th>
+                    </tr>
+                    </thead>
+                <tbody>
+                    <tr>
+                        <td>push(x)</td>
+                        <td>Menambahkan elemen x ke bagian atas stack</td>
+                    </tr>
+                    <tr>
+                        <td>pop()</td>
+                        <td>Menghapus elemen paling atas dari stack</td>
+                    </tr>
+                    <tr>
+                        <td>peek()</td>
+                        <td>Melihat elemen paling atas tanpa menghapusnya</td>
+                    </tr>
+                    <tr>
+                        <td>isEmpty()</td>
+                        <td>Mengecek apakah stack kosong</td>
+                    </tr>
+                    <tr>
+                        <td>isFull()</td>
+                        <td>Mengecek apakah stack penuh</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <!------------------------------------------------------------------------->
+        
+        <!------------------------------------------------------------------------->
+        <!------------------------------------------------------------------------->
+        
+        <div id="stackBox">
+            <!--input value id -->
+            <input type="text" id="inputValue" placeholder="Masukkan nilai..." />
+            <button onclick="pushItem()">Push</button>
+            <button onclick="popItem()">Pop</button>
+            <button id="btnReset"onclick="resetItem()">Reset</button>
+            
+            <div id="stack"></div>
+            
+            <script>
+                const stack = [];
+                
+                function renderStack() {
+                    const stackContainer = document.getElementById("stack");
+                    stackContainer.innerHTML = "";
+                    stack.forEach(item => {
+                        const div = document.createElement("div");
+                        div.className = "item";
+                        div.textContent = item;
+                    stackContainer.appendChild(div);
+                });
+                }
+                function pushItem() {
+                    const value = document.getElementById("inputValue").value;
+                    if (value === "") return alert("Masukkan nilai dulu!");
+                    stack.push(value);
+                    document.getElementById("inputValue").value = "";
+                    renderStack();
+                    }
+                    
+                    function popItem() {
+                        if (stack.length === 0) return alert("Stack kosong!");
+                        const popped = stack.pop();
+                        alert(`Elemen ${popped} dihapus dari stack`);
+                        renderStack();
+                        }
+                        
+                        renderStack();
+                    
+                    function resetItem(){
+                        stack.length = 0;
+                        renderStack();
+                        alert("semua item dihapus");
+                    }
+
+                    </script>
+                    <hr>
+                    <div id="note">
+                      <h3>Detail pengumpulan tugas</h3>
+                      <table id="tableBorder">
+                          <thead>
+                              <tr>
+                                  <th>no</th>
+                                  <th>aksi</th>
+                                  <th>code</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td>1</td>
+                                  <td>Menambahkan tombol reset</td>
+                                  <td>#resetItem | function resetItem()</td>
+                              </tr>
+                              <tr>
+                                  <td>2</td>
+                                  <td>Mengubah warna item pertama dan kedua</td>
+                                  <td>css | item.nth:child(1) | hijau -- item.last:child | merah</td>
+                              </tr>
+                              <tr>
+                                <td>3</td>
+                                <td>Mengubah tampilan web</td>
+                                <td>Responsive web | font size | color</td>
+                              </tr>
+                          </tbody>
+                      </table>
+                    </div>
+                </div>
+              </div>  
+              
+        </body>
+        </html>
